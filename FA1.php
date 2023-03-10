@@ -59,14 +59,24 @@
             return $this -> a;
         }
 
-        //1.c methods
-        function displayInfo(){
+         //1.c methods
+         function displayInfo(){
             echo $this -> chuckie . '<br>';
             echo $this -> aquaflask . '<br>';
             echo $this -> a . '<br>';
         }
-    }
-    
+
+        public function sayhello() {
+            echo "Hello";
+         }
+       }
+
+        trait hello {
+            public function sayfor() {
+               echo "! :)";
+            }
+          }
+
     
 
     //2 & 2a
@@ -116,8 +126,10 @@
         }
     }
 
+
     //3
     class multilevel extends childClass{
+        use hello;
          public function multilevel(){
             echo "multilevel inheritance";
         }
@@ -125,6 +137,7 @@
 
     //4
     class hierarchical extends ParentClass{
+        use hello;
         public function hierarchical(){
             echo "hierarchical inheritance";
         }
@@ -141,6 +154,11 @@
     $testing-> tester('lush' , 'cosmetics');
     $testing-> printInfo('', '');
     $testing-> printInfo('');
+
+    $testing-> sayhello();
+    $testing-> sayfor();
+    $testing-> multilevel();
+    $testing-> hierarchical();
 
 ?>
 
