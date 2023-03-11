@@ -32,7 +32,7 @@
     $FA1B-> setaquaflask('aquaflask');
     $FA1B-> setint('400');
     $FA1B-> displayInfo();
-    $FA1B-> sayhello();
+    
    
 ?>
 

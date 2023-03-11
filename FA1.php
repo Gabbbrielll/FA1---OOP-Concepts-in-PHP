@@ -66,18 +66,8 @@
             echo $this -> a . '<br>';
         }
 
-        public function sayhello() {
-            echo "Hello";
-         }
+        
        }
-
-        trait hello {
-            public function sayfor() {
-               echo "! :)";
-            }
-          }
-
-    
 
     //2 & 2a
     class childClass extends ParentClass{
@@ -98,14 +88,13 @@
             return $this-> scissors;
         }
 
-
         //2.f method printInfo
-        private function printInfo($arguments1, $arguments2){
+         function printInfo(){
             echo $this-> mango . '<br>';
             echo $this-> scissors . '<br>';
         }
 
-        private function printInfo2($arguments1){
+        function printInfo2(){
             echo $this-> mango . '<br>';
         }
 
@@ -116,49 +105,47 @@
         }
 
         //6.overload
-        public function __call($member, $arguments)
+        function __call($dutchmill, $yakult)
         {
-            $numberOfArguments = count($arguments);
+            echo " overload '$dutchmill' "
+            . implode(', ', $yakult). "<br>";
+        }
 
-            if (method_exists($this, $function = $member . $numberOfArguments)) {
-                call_user_func_array(array($this, $function), $arguments);
+        static function __callStatic($dutchmill, $yakult) {
+         
+            echo " overload '$dutchmill' "
+                . implode(', ', $yakult). "<br>";
             }
         }
-    }
-
 
     //3
     class multilevel extends childClass{
-        use hello;
-         public function multilevel(){
-            echo "multilevel inheritance";
+            function multilevel(){
+            echo "multilevel inheritance" . "<BR>";
         }
     }
 
     //4
     class hierarchical extends ParentClass{
-        use hello;
-        public function hierarchical(){
-            echo "hierarchical inheritance";
+            function hierarchical(){
+            echo "hierarchical inheritance" . "<BR>";
         }
     }
 
-    $testing = new childClass();
-
     //2.c Test inheritance
-    $testing-> setchuckie('chuckie');
+
+    $testing = new childClass();
     $testing-> setaquaflask('aquaflask');
     $testing-> setint('400');
     $testing-> displayInfo();
-
-    $testing-> tester('lush' , 'cosmetics');
+    $testing-> tester('mango' , 'scissors');
     $testing-> printInfo('', '');
-    $testing-> printInfo('');
-
-    $testing-> sayhello();
-    $testing-> sayfor();
-    $testing-> multilevel();
+    $testing-> printInfo2('');
+    $testing-> test();
+    $testing = new hierarchical();
     $testing-> hierarchical();
+    $testing = new multilevel();
+    $testing-> multilevel();
 
 ?>
 
