@@ -55,7 +55,7 @@
             $this ->  a = $a;
         }
 
-        function getgatorade(){
+        function getint(){
             return $this -> a;
         }
 
